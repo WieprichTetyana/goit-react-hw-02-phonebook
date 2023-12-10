@@ -37,9 +37,9 @@ const StyledButton = styled.button`
   cursor: pointer;
 `;
 
-export const ContactForm = ({
-  name,
-  number,
+const ContactForm = ({
+  name = '',
+  number = '',
   onNameChange,
   onNumberChange,
   onAddContact,

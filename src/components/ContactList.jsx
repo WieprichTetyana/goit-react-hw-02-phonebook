@@ -14,10 +14,12 @@ const StyledList = styled.ul`
 const StyledListItem = styled.li`
   padding: 5px 10px;
   background-color: white;
+
   border: none;
   outline: none;
   border-bottom: 1px solid;
   border: 1px solid #272525;
+
   border-radius: 5px;
   display: flex;
   flex-direction: row;
