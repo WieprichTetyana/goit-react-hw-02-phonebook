@@ -1,5 +1,4 @@
 import { Component } from 'react';
-
 import styled from 'styled-components';
 
 const StyledForm = styled.form`
@@ -55,8 +54,59 @@ const StyledButton = styled.button`
 
   text-align: center;
 `;
-
 export class ContactForm extends Component {
+  state = {
+    name: '',
+    number: '',
+  };
+
+  handleSubmit = event => {
+    event.preventDefault();
+    const { name, number } = this.state;
+    this.props.onSubmit({ name, number });
+    this.setState({ name: '', number: '' });
+  };
+
+  handleChange = event => {
+    const { name, value } = event.target;
+    this.setState({ [name]: value });
+  };
+
+  render() {
+    return (
+      <StyledForm onSubmit={this.handleSubmit}>
+        <ul>
+          <StyledListItem>
+            <StyledLabel htmlFor="name">Name </StyledLabel>
+            <StyledInput
+              type="text"
+              name="name"
+              id="name"
+              required
+              onChange={this.handleChange}
+              value={this.state.name}
+              placeholder="Name"
+            />
+          </StyledListItem>
+          <StyledListItem>
+            <StyledLabel htmlFor="number">Number </StyledLabel>
+            <StyledInput
+              type="tel"
+              name="number"
+              id="number"
+              required
+              onChange={this.handleChange}
+              value={this.state.number}
+              placeholder="Number"
+            />
+          </StyledListItem>
+        </ul>
+        <StyledButton type="submit">Add contact</StyledButton>
+      </StyledForm>
+    );
+  }
+}
+/* export class ContactForm extends Component {
   state = {
     name: '',
     number: '',
@@ -92,3 +142,4 @@ export class ContactForm extends Component {
     );
   }
 }
+ */
